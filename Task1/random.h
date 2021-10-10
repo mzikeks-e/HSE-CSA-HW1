@@ -7,8 +7,8 @@
 // random.h - содержит генератор случайных чисел в диапазоне от 1 до 20
 //------------------------------------------------------------------------------
 
-inline auto Random() {
-    return rand() % 50;
+inline auto Random(int to = 50) {
+    return rand() % to;
 }
 
 inline auto GenerateContent(int length) {

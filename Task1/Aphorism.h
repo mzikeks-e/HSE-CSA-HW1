@@ -10,11 +10,11 @@
 #include "random.h"
 
 //Афоризм
-struct Aphorism{
-	char author[]; // автор афоризма
+struct Aphorism : StorehouseOfWisdom{
+	char* author; // автор афоризма
 };
 
-// Ввод параметров ффоризма из файла
+// Ввод параметров афоризма из файла
 void In(Aphorism& с, FILE* file);
 
 // Случайный ввод афоризма

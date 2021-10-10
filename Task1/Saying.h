@@ -10,8 +10,8 @@
 #include "random.h"
 
 // Пословицы и поговорки
-struct Saying{
-	char country[]; // страна
+struct Saying : StorehouseOfWisdom {
+	char* country; // страна
 };
 
 // Ввод параметров пословицы/поговорки из файла

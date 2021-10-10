@@ -10,8 +10,8 @@
 #include "random.h"
 
 // Загадка
-struct Riddle {
-    char answer[]; // ответ
+struct Riddle : StorehouseOfWisdom {
+    char* answer; // ответ
 };
 
 // Ввод параметров загадки из файла

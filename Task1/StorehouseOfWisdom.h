@@ -18,8 +18,7 @@ const char PUNCTUATION_SYMBOLS[] { ',', '.', ';', '-', ':', '-', '?', '!' };
 
 //------------------------------------------------------------------------------
 // структура, обобщающая все имеющиеся альтернативы (кладези мудрости)
-struct StorehouseOfWisdom
-{
+struct StorehouseOfWisdom {
     // значения ключей для каждой из кладезей мудрости
     enum key { RIDDLE, APHORISM, SAYING };
     key k;
@@ -28,9 +27,9 @@ struct StorehouseOfWisdom
 
     // используемые альтернативы
     union { // используем простейшую реализацию
-        Riddle riddle;
-        Aphorism aphorism;
-        Saying saying;
+        Riddle& riddle;
+        Aphorism& aphorism;
+        Saying& saying;
     };
 };
 
