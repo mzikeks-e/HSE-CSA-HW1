@@ -7,7 +7,7 @@
 
 #include "StorehouseOfWisdom.h"
 
-struct {
+struct Saying{
 	char country[];
 };
 
