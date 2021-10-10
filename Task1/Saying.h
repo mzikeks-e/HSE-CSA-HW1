@@ -6,9 +6,21 @@
 //-------------------------------------------------------------------------------------
 
 #include "StorehouseOfWisdom.h"
+#include "stdio.h"
+#include "random.h"
 
+// Пословицы и поговорки
 struct Saying{
-	char country[];
+	char country[]; // страна
 };
 
-#endif
+// Ввод параметров пословицы/поговорки из файла
+void In(Saying& с, FILE* file);
+
+// Случайный ввод пословицы/поговорки
+void InRnd(Saying& с);
+
+// Вывод параметров пословицы/поговорки в форматируемый поток
+void Out(Saying& с, FILE* file);
+
+#endif //__Saying__

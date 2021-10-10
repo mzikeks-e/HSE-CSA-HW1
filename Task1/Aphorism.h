@@ -6,10 +6,21 @@
 //-------------------------------------------------------------------------------------
 
 #include "StorehouseOfWisdom.h"
+#include "stdio.h"
+#include "random.h"
 
-struct Aphorism
-{
-	char author[];
+//Афоризм
+struct Aphorism{
+	char author[]; // автор афоризма
 };
 
-#endif
+// Ввод параметров ффоризма из файла
+void In(Aphorism& с, FILE* file);
+
+// Случайный ввод афоризма
+void InRnd(Aphorism& с);
+
+// Вывод параметров афоризма в форматируемый поток
+void Out(Aphorism& с, FILE* file);
+
+#endif //__Aphorism__
