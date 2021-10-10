@@ -1,7 +1,14 @@
-#pragma once
+#ifndef __Riddle__
+#define __Riddle__
+
+//-------------------------------------------------------------------------------------
+// Riddle.h - содержит описание альтернативы "Загадки" и её интерфейса
+//-------------------------------------------------------------------------------------
+
 #include "StorehouseOfWisdom.h"
-class Riddle :
-    public StorehouseOfWisdom
-{
+
+struct Riddle {
+    char answer[];
 };
 
+#endif

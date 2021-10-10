@@ -1,5 +1,17 @@
-#pragma once
-class StorehouseOfWisdom
+#ifndef __StorehouseOfWisdom__
+#define __StorehouseOfWisdom__
+
+//------------------------------------------------------------------------------
+// StorehouseOfWisdom.cpp - содержит процедуры связанные с обработкой 
+// oбобщенного артефакта (Кладези мудрости)
+// и создания произвольной альтернативы
+//------------------------------------------------------------------------------
+
+#include <cstring>
+
+struct StorehouseOfWisdom
 {
+	char content[];
 };
 
+#endif
