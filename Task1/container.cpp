@@ -3,7 +3,6 @@
 //------------------------------------------------------------------------------
 
 #define _CRT_SECURE_NO_WARNINGS
-#include "stdio.h"
 #include "container.h"
 
 //------------------------------------------------------------------------------
@@ -63,7 +62,7 @@ void ProcessingV22(container& c, FILE* file) {
     fprintf(file, "Arithmetic mean: %f\n", mean);
 
 
-    fprintf(file, "Perimeteres processed:\n");
+    fprintf(file, "Quotients processed:\n");
     for (int i = 0; i < c.len; i++) {
         if (Quotient(*(c.cont[i])) <= mean) {
             fprintf(file, "%f   ", Quotient(*(c.cont[i])));

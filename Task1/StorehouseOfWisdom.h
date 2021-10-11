@@ -14,6 +14,9 @@
 
 const char PUNCTUATION_SYMBOLS[]{ ',', '.', ';', '-', ':', '-', '?', '!' };
 const int MAX_CONTENT_SIZE = 4096;
+const int MAX_AUTHOR_SIZE = 512;
+const int MAX_COUNTRY_SIZE = 512;
+const int MAX_ANSWER_SIZE = 1024;   
 
 //------------------------------------------------------------------------------
 // структура, обобщающая все имеющиеся альтернативы (кладези мудрости)

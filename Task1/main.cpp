@@ -9,20 +9,18 @@
 #include <cstring>
 #include "container.h"
 
-void errMessage1() {
-    printf("Incorrect command line!\nWaited:\ncommand -f infile outfile01 outfile02\n"
-        "Or:\ncommand -n number outfile01 outfile02\n");
-}
-
-void errMessage2() {
-    printf("Incorrect qualifier value!\nWaited:\ncommand -f infile outfile01 outfile02\n"
-        "Or:\ncommand -n number outfile01 outfile02\n");
+void PrintError() {
+    printf("Incorrect command!\n"
+        "Waited:\n"
+        "command - f infile outfile01 outfile02\n"
+        "Or:\n"
+        "command - n number outfile01 outfile02\n");
 }
 
 //------------------------------------------------------------------------------
 int main(int argc, char* argv[]) {
     if (argc != 5) {
-        errMessage1();
+        PrintError();
         return 1;
     }
 
@@ -45,7 +43,7 @@ int main(int argc, char* argv[]) {
         InRnd(c, size);
     }
     else {
-        errMessage2();
+        PrintError();
         return 2;
     }
 
