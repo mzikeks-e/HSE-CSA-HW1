@@ -14,9 +14,6 @@
 
 const char PUNCTUATION_SYMBOLS[]{ ',', '.', ';', '-', ':', '-', '?', '!' };
 const int MAX_CONTENT_SIZE = 4096;
-const int MAX_AUTHOR_SIZE = 512;
-const int MAX_COUNTRY_SIZE = 512;
-const int MAX_ANSWER_SIZE = 1024;   
 
 //------------------------------------------------------------------------------
 // структура, обобщающа€ все имеющиес€ альтернативы (кладези мудрости)
@@ -28,13 +25,11 @@ struct StorehouseOfWisdom {
 	char* content;
 
     // используемые альтернативы
-    union alternatives {
+    union {
         Riddle riddle_;
         Aphorism aphorism_;
         Saying saying_;
     };
-
-    alternatives Type;
 };
 
 // ¬вод обобщенной кладези мудрости

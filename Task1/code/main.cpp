@@ -24,7 +24,7 @@ int main(int argc, char* argv[]) {
         return 1;
     }
 
-    printf("Start");
+    printf("Start. Please, check, that all spaces in content of storehouse replaced with _.");
     container c;
     Init(c);
 

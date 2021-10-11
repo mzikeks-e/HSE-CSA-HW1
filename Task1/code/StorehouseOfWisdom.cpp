@@ -4,29 +4,31 @@
 //--------------------------------------------------------------------------------------
 
 #define _CRT_SECURE_NO_WARNINGS
-#include <random.h>
+#include <string.h>
+#include "random.h"
 #include "StorehouseOfWisdom.h"
 
 //------------------------------------------------------------------------------
-// Ввод параметров обобщенной фигуры из файла
+// Ввод параметров кладези из файла
 StorehouseOfWisdom* In(FILE* file, int k) {
     StorehouseOfWisdom* s = new StorehouseOfWisdom;
     char* content = new char[MAX_CONTENT_SIZE];
     fscanf(file, "%s", content);
     s->content = content;
 
+
     switch (k) {
     case 0:
         s->k = StorehouseOfWisdom::RIDDLE;
-        In(s->Type.riddle_, file);
+        In(s->riddle_, file);
         return s;
     case 1:
         s->k = StorehouseOfWisdom::APHORISM;
-        In(s->Type.aphorism_, file);
+        In(s->aphorism_, file);
         return s;
     case 2:
         s->k = StorehouseOfWisdom::SAYING;
-        In(s->Type.saying_, file);
+        In(s->saying_, file);
         return s;
     default:
         return 0;
@@ -44,15 +46,15 @@ StorehouseOfWisdom* InRnd() {
     switch (type_number) {
     case 0:
         s->k = StorehouseOfWisdom::RIDDLE;
-        InRnd(s->Type.riddle_);
+        InRnd(s->riddle_);
         return s;
     case 1:
         s->k = StorehouseOfWisdom::APHORISM;
-        InRnd(s->Type.aphorism_);
+        InRnd(s->aphorism_);
         return s;
     case 2:
         s->k = StorehouseOfWisdom::SAYING;
-        InRnd(s->Type.saying_);
+        InRnd(s->saying_);
         return s;
     default:
         return 0;
@@ -66,13 +68,13 @@ void Out(StorehouseOfWisdom& s, FILE* file) {
     switch (s.k)
     {
     case StorehouseOfWisdom::RIDDLE:
-        fprintf(file, "It is Riddle. Question %s. Answer: %s. Quotient = %a", s.content, s.Type.riddle_.answer, Quotient(s));
+        fprintf(file, "It is Riddle. Question: %s. Answer: % s.Quotient = % f\n", s.content, s.riddle_.answer, Quotient(s));
         break;
     case StorehouseOfWisdom::APHORISM:
-        fprintf(file, "It is Aphorism. %s - says %s. Quotient = %a", s.content, s.Type.aphorism_.author, Quotient(s));
+        fprintf(file, "It is Aphorism. %s - says %s. Quotient = %f\n", s.content, s.aphorism_.author, Quotient(s));
         break;
     case StorehouseOfWisdom::SAYING:
-        fprintf(file, "It is Saying from . %s - %s. Quotient = %a", s.Type.saying_.country, s.content, Quotient(s));
+        fprintf(file, "It is Saying from %s: %s. Quotient = %f\n", s.saying_.country, s.content, Quotient(s));
         break;
     default:
         fprintf(file, "Incorrect Storehouse of Wisdom!");
@@ -83,8 +85,7 @@ void Out(StorehouseOfWisdom& s, FILE* file) {
 // Вычисление частного знаков на длину кладези мудрости
 double Quotient(StorehouseOfWisdom& s) {
     int punctuaton_count = 0;
-
-    for (int i = 0; i < (sizeof(s.content) / sizeof(*s.content)); i++) {
+    for (int i = 0; i < strlen(s.content); i++) {
         for (int j = 0; j < (sizeof(PUNCTUATION_SYMBOLS) / sizeof(*PUNCTUATION_SYMBOLS)); j++) {
             if (s.content[i] == PUNCTUATION_SYMBOLS[j]) {
                 punctuaton_count++;
@@ -92,6 +93,7 @@ double Quotient(StorehouseOfWisdom& s) {
             }
         }
     }
-
-    return punctuaton_count / (double)(sizeof(s.content) / sizeof(*s.content));
+    
+    return (double)punctuaton_count / strlen(s.content);
+    return (double)punctuaton_count / strlen(s.content);
 }

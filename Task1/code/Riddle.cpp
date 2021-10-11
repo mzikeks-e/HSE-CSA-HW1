@@ -3,7 +3,6 @@
 //------------------------------------------------------------------------------
 
 #define _CRT_SECURE_NO_WARNINGS
-#include <iostream>
 #include "Riddle.h"
 
 const int MAX_ANSWER_SIZE = 1024;
