@@ -5,12 +5,11 @@
 // Saying.h - содержит описание альтернативы "Пословицы и поговороки" и её интерфейса
 //-------------------------------------------------------------------------------------
 
-#include "StorehouseOfWisdom.h"
 #include "stdio.h"
 #include "random.h"
 
 // Пословицы и поговорки
-struct Saying : StorehouseOfWisdom {
+struct Saying {
 	char* country; // страна
 };
 
@@ -19,8 +18,5 @@ void In(Saying& с, FILE* file);
 
 // Случайный ввод пословицы/поговорки
 void InRnd(Saying& с);
-
-// Вывод параметров пословицы/поговорки в форматируемый поток
-void Out(Saying& с, FILE* file);
 
 #endif //__Saying__

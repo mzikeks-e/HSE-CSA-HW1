@@ -7,14 +7,13 @@
 // и создани€ произвольной альтернативы
 //------------------------------------------------------------------------------
 
-#include <cstring>
-#include "stdio.h"
 #include "Saying.h"
 #include "Riddle.h"
 #include "Aphorism.h"
 
+
+const char PUNCTUATION_SYMBOLS[]{ ',', '.', ';', '-', ':', '-', '?', '!' };
 const int MAX_CONTENT_SIZE = 4096;
-const char PUNCTUATION_SYMBOLS[] { ',', '.', ';', '-', ':', '-', '?', '!' };
 
 //------------------------------------------------------------------------------
 // структура, обобщающа€ все имеющиес€ альтернативы (кладези мудрости)
@@ -23,14 +22,16 @@ struct StorehouseOfWisdom {
     enum key { RIDDLE, APHORISM, SAYING };
     key k;
 
-	char content[MAX_CONTENT_SIZE];
+	char* content;
 
     // используемые альтернативы
-    union { // используем простейшую реализацию
-        Riddle& riddle;
-        Aphorism& aphorism;
-        Saying& saying;
+    union alternatives {
+        Riddle riddle_;
+        Aphorism aphorism_;
+        Saying saying_;
     };
+
+    alternatives Type;
 };
 
 // ¬вод обобщенной кладези мудрости

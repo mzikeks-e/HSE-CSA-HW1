@@ -12,22 +12,22 @@
 // Ввод параметров обобщенной фигуры из файла
 StorehouseOfWisdom* In(FILE* file, int k) {
     StorehouseOfWisdom* s = new StorehouseOfWisdom;
-    char content;
-    fscanf(file, "%s", &content);
+    char* content = new char[MAX_CONTENT_SIZE];
+    fscanf(file, "%s", content);
     s->content = content;
 
     switch (k) {
     case 0:
         s->k = StorehouseOfWisdom::RIDDLE;
-        In(s->riddle, file);
+        In(s->Type.riddle_, file);
         return s;
     case 1:
         s->k = StorehouseOfWisdom::APHORISM;
-        In(s->aphorism, file);
+        In(s->Type.aphorism_, file);
         return s;
     case 2:
         s->k = StorehouseOfWisdom::SAYING;
-        In(s->saying, file);
+        In(s->Type.saying_, file);
         return s;
     default:
         return 0;
@@ -39,46 +39,46 @@ StorehouseOfWisdom* In(FILE* file, int k) {
 StorehouseOfWisdom* InRnd() {
     StorehouseOfWisdom* s = new StorehouseOfWisdom;
     auto type_number = rand() % 3;
-    char content[] = GenerateContent(rand() % 50);
+    char* content = GenerateContent(rand() % 50);
     s->content = content;
 
     switch (type_number) {
     case 0:
         s->k = StorehouseOfWisdom::RIDDLE;
-        InRnd(s->riddle);
+        InRnd(s->Type.riddle_);
         return s;
     case 1:
         s->k = StorehouseOfWisdom::APHORISM;
-        InRnd(s->aphorism);
+        InRnd(s->Type.aphorism_);
         return s;
     case 2:
         s->k = StorehouseOfWisdom::SAYING;
-        InRnd(s->saying);
+        InRnd(s->Type.saying_);
         return s;
     default:
         return 0;
     }
 }
 
+
 //------------------------------------------------------------------------------
-// Вывод параметров текущей кладези в поток
+// Вывод параметров кладези в поток
 void Out(StorehouseOfWisdom& s, FILE* file) {
-    switch (s.k) {
+    switch (s.k)
+    {
     case StorehouseOfWisdom::RIDDLE:
-        Out(s.riddle, file);
+        fprintf(file, "It is Riddle. Question %s. Answer: %s. Quotient = %a", s.content, s.Type.riddle_.answer, Quotient(s));
         break;
     case StorehouseOfWisdom::APHORISM:
-        Out(s.aphorism, file);
+        fprintf(file, "It is Aphorism. %s - says %s. Quotient = %a", s.content, s.Type.aphorism_.author, Quotient(s));
         break;
     case StorehouseOfWisdom::SAYING:
-        Out(s.saying, file);
+        fprintf(file, "It is Saying from . %s - %s. Quotient = %a", s.Type.saying_.country, s.content, Quotient(s));
         break;
     default:
         fprintf(file, "Incorrect Storehouse of Wisdom!");
-        return;
+        break;
     }
-
-    fprintf(file, s.content);
 }
 
 // Вычисление частного знаков на длину кладези мудрости
