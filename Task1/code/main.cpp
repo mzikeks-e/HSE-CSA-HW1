@@ -12,9 +12,9 @@
 void PrintError() {
     printf("Incorrect command!\n"
         "Waited:\n"
-        "command - f infile outfile01 outfile02\n"
+        "-f infile outfile01 outfile02\n"
         "Or:\n"
-        "command - n number outfile01 outfile02\n");
+        "-n number outfile01 outfile02\n");
 }
 
 //------------------------------------------------------------------------------

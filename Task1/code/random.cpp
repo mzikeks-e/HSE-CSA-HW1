@@ -1,4 +1,4 @@
-#include <cstdlib>
+#include "random.h"
 #include "StorehouseOfWisdom.h"
 
 

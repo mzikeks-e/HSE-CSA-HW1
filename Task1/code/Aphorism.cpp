@@ -5,10 +5,14 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include "Aphorism.h"
 
+const int MAX_AUTHOR_SIZE = 512;
+
 //------------------------------------------------------------------------------
 // Ввод параметров афоризма из потока
 void In(Aphorism& a, FILE* file) {
-    fscanf(file, "%s", a.author);
+    char* author = new char[MAX_AUTHOR_SIZE];
+    fscanf(file, "%s", author);
+    a.author = author;
 }
 
 // Случайный ввод параметров афоризма
